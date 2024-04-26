@@ -1,0 +1,54 @@
+# Importing required packages
+import tensorflow as tf
+from keras.models import Sequential
+from keras.layers import Dense, Conv2D, Dropout, Flatten, MaxPooling2D
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Define the input shape based on your animal dataset
+input_shape = (128, 128, 3)  # Adjust for the dimensions of your animal images
+
+# Assuming you have already loaded and preprocessed your animal dataset.
+# Replace x_train, y_train, x_test, and y_test with your own dataset.
+
+# Load and preprocess your animal dataset
+# x_train, y_train, x_test, y_test = load_and_preprocess_animal_dataset()
+
+# Define the number of classes based on your animal categories
+num_classes = 5  # Adjust to match the number of classes in your dataset
+
+# Ensure that the values are in float32 and normalized as needed
+
+# Define the model architecture
+model = Sequential()
+model.add(Conv2D(64, kernel_size=(3, 3), input_shape=input_shape))
+model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Flatten())
+model.add(Dense(200, activation="relu"))
+model.add(Dropout(0.3))
+model.add(Dense(num_classes, activation="softmax"))
+
+model.summary()
+
+# Compile the model
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+
+# Train the model with your animal dataset
+# model.fit(x_train, y_train, epochs=10)
+
+# Evaluate the model with your test dataset
+# test_loss, test_acc = model.evaluate(x_test, y_test)
+
+# print("Loss=%.3f" % test_loss)
+# print("Accuracy=%.3f" % test_acc)
+
+# Showing an image from your animal dataset
+# image = x_train[0]
+# plt.imshow(image)
+# plt.show()
+
+# Predicting the class of the image
+# image = np.expand_dims(image, axis=0)
+# predicted_class = model.predict(image)
+# predicted_class = np.argmax(predicted_class)
+# print("Predicted Class: {}".format(predicted_class))
